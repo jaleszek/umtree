@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Sprzedaj starą</title>
+<%= render 'layouts/include_tags'%>
+</head>
+<body>
+	<% if !signed_in? %>
+	  <%= render 'layouts/login_panel' %>
+      <%end%>
+<div id="templatemo_container">
+<%= render 'layouts/title_bar'%>
+<%= render 'layouts/header_menu'%>
+    <div id="templatemo_content_wrapper">
+    	<div id="templatemo_content">
+        	<div id="side_column">
+<div id="left_box">
+    <% if signed_in? %> 
+      <%= render 'layouts/left_column_user'%>
+      <%end%> 
+    <%= render 'layouts/left_column_menu'%>
+           </div> 
+</div>
+            <div id="main_column">
+                <div class="main_column_section"> 
+                  <%= flash[:error] %>
+			<%= yield %>      
+                </div>
+            </div> 
+        	<div class="cleaner"></div></div>
+        <%= render 'layouts/footer'%>
+
+        <div class="cleaner"></div>
+    </div></div>
+
+</body>
+</html>

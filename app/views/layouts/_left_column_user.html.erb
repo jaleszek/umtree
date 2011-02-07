@@ -1,0 +1,6 @@
+<div id="user_info">
+Email <b><%= current_user.email %></b><br/>
+Użytkownik <b><%= current_user.name %></b><br/>
+<%= link_to "Edytuj dane", edit_user_path(current_user)%>
+<%= link_to "Wyloguj", signout_path %>
+</div>

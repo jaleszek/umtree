@@ -1,0 +1,27 @@
+ 
+<table>
+  <tr>
+    <th>id</th>
+    <th>parent_id</th>
+    <th>name</th>
+    <th>position</th>
+    
+  </tr>
+<%=get_categories%>
+<% @categories_label.each do |label| %>
+  <tr>
+    <td><%= label.id %></td>
+    <td><%= label.name %></td>
+    <td><%= label.position %></td>
+
+    <% @categories.each do |category| %>
+    <tr><td>  <%=category.name if category.parent_id == label.id %></td></tr>
+   <%end%>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Category', new_category_path %>

@@ -1,0 +1,6 @@
+<%form_for :post, :html => {:multipart => true} do |f| %>
+<%= render :partial => 'form', :locals=>{:f => f} %>
+<%=f.submit "Dodaj ogłoszenie", :class => 'send_adv_button'%>
+<%end%>
+
+

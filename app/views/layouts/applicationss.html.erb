@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>simple orange, css template, free website layout</title>
+<meta name="keywords" content="simple orange, css template, free website layout, CSS, HTML" />
+<meta name="description" content="simple orange is a free css template or website layout from templatemo.com" />
+<link href="application.css" rel="stylesheet" type="text/css" />
+
+<script src="jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+			$(document).ready(
+			  function(){
+			  	
+			  	$("#moje_ogloszenia").click(
+				  function(){
+				    if($("#login_panel").css("display")=="none"){
+					generateMessageBox($(this), true);}
+				  });
+				$("#close_button").click(
+				  function(){	
+					 hideMsg();
+				  }
+				);
+				$("#city_label").click(
+					function(){
+						$(this).next().animate({height:'toggle'});	
+			  }
+			);
+			});
+			function hideMsg(){
+				$("#login_panel").hide();
+			}
+			function showLoginDescription(){
+				$("#login_panel span").show("fast");
+			}
+			function split(string, zakres){
+				var len = string.length;
+				var tempString = "";
+				for(var i = 0; i < len-zakres; i++){
+					tempString += string[i];
+				}
+				if(tempString == "")
+				  return false;
+				return tempString;
+			}
+			function generateMessageBox(target, display ){
+				if(display == true){
+					var objOfTarget = target;//$("#" + target);
+					var posOfTarget = objOfTarget.position();
+					
+					var messageDiv = $("#login_panel");
+					var topPosition = parseInt(posOfTarget.top + parseInt(split(objOfTarget.css("height"), 2)) ) - 20;
+					var leftPosition = parseInt(posOfTarget.left)-30;
+					messageDiv.show("fast");
+					$("#login_panel span").css("display", "none");
+					messageDiv.css({"top" : topPosition, "left" : leftPosition});
+				}
+				setTimeout("showLoginDescription()", 1);
+				//setTimeout("hideMsg()", 5000);
+			}
+</script>
+</head>
+<body>
+	<div id="login_panel">
+		  <img src="images/close.png" id="close_button"></img>
+		  <span>Aby móc korzystać z tej funkcji musisz być zalogowany <a>(rejestracja)</a></span>
+		    <div>
+			  <label>login</label>
+			  <input type="text" id="login"/>
+			  <label>hasło</label>
+			  <input type="password" id="password"/>
+			  <input type="button" id="login_button" value="zaloguj"/>
+			</div>
+		</div>
+<div id="templatemo_container">
+
+		
+	<div id="templatemo_site_title_bar">
+	    <div id="site_title">
+            <h1><a href="http://www.templatemo.com" target="_parent">
+                <!--
+                Simple Orange
+                <span>your tagline goes here</span>
+                -->
+                sprzedaj-stara.pl
+            </a></h1>
+      </div>
+	</div> <!-- end of templatemo_site_title_bar -->
+    
+    <div id="templatemo_menu">
+	    <ul>
+            <li><a href="#"><span>Ogłoszenia<span></a></li>
+            <li><a href="#"><span>Dodaj</span></a></li>
+            <li><a href="#"><span>Szukaj</span></a></li>
+			<li><div id="moje_ogloszenia"><span>Moje ogłoszenia</span></div></li>
+            <li><a href="#"><span>Pomoc</span></a></li>
+        </ul>
+	
+    </div> <!-- end of templatemo_menu -->
+    
+    <div id="templatemo_content_wrapper">
+    
+    	<div id="templatemo_content">
+        
+        	<div id="side_column">
+        
+      <div id="left_box">
+		<div id="city_label">
+			<span>Lokalizacja</span>
+		</div>
+		<div id="city_box">
+			<span>Warszawa</span>
+			<span>Kraków</span>
+			<span>Wrocław</span>
+			<span>Gdańsk</span>
+			<span>Katowice</span>
+			<span>Rzeszów</span>
+			<span>cały kraj</span>
+		</div>
+		<div id="categories_label">
+			<span>Kategorie</span>
+		</div>
+		<div id="categories_box">
+		
+		</div>
+	  </div>
+            
+            </div> <!-- end of side column -->
+            
+            <div id="main_column">
+                <div class="main_column_section">    
+			<div style="width:400px; height: 800px; background-color:#f0865d;-webkit-border-radius: 20px 20px 20px 20px;"></div>   
+                </div>
+            </div> <!-- end of main column -->
+            
+            
+        	<div class="cleaner"></div>
+        </div> <!-- end of tempaltemo content -->
+    	
+
+        <div id="templatemo_footer">
+        
+            <ul class="footer_menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Web Design</a></li>
+                <li><a href="#">Templates</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Blog</a></li>
+                <li class="last_menu"><a href="#">Contact</a></li>
+            </ul>
+            
+            Copyright © 2048 <a href="#">Your Company Name</a> | <a href="http://www.iwebsitetemplate.com" target="_parent">Website Templates</a> by <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a> 
+        
+        </div>
+
+        <div class="cleaner"></div>
+    </div> <!-- end of templatemo_content_wrapper -->
+    
+</div> <!-- end of templatemo_container -->
+
+</body>
+</html>

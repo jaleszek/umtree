@@ -1,0 +1,22 @@
+<div id="categories_box">
+<% get_categories %>
+
+<% @categories_label.each do |label| %>
+  <div> <tr><td colspan="2">
+    <span class="root_node_category">
+      <img src="images/plus_icon.jpg" style="position:relative;top:3px;"> </img>
+	 <%= label.name %>
+    </span> </td><td></td></tr></div>
+
+    <div class="sliding_categories_div">
+<table>
+      <% @categories.each do |category| %>
+    <% if category.parent_id == label.id %>
+	<tr><td><span>
+      <%= link_to category.name, category %></span></td>
+     <td> <%= check_box('#{label.id}', '#{category.id}' ) %></td></tr>  
+     </span>
+    <% end %>
+  <% end %></table>
+</div><% end %>
+</div>

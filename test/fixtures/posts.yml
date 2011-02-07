@@ -1,0 +1,36 @@
+# == Schema Information
+# Schema version: 20110122175055
+#
+# Table name: posts
+#
+#  id          :integer         not null, primary key
+#  category_id :integer
+#  user_id     :integer
+#  price       :string(255)
+#  content     :string(255)
+#  alt_city    :string(255)
+#  alt_street  :string(255)
+#  title       :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  category_id: 1
+  user_id: 1
+  price: MyString
+  content: MyString
+  alt_city: MyString
+  alt_street: MyString
+  title: MyString
+
+two:
+  category_id: 1
+  user_id: 1
+  price: MyString
+  content: MyString
+  alt_city: MyString
+  alt_street: MyString
+  title: MyString

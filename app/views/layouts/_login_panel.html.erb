@@ -1,0 +1,13 @@
+<div id="login_panel">
+	<img src="images/close.png" id="close_button"></img>
+	<span>Aby móc korzystać z tej funkcji musisz być zalogowany <%= link_to "zarejestruj", signup_path %></span>
+		<div>
+              <%= form_for(:session, :url => sessions_path) do |f|%>
+			<label>login</label>
+                  <%= f.text_field :email, :id => "login"%>
+			<label>hasło</label>
+                  <%= f.password_field :password, :id =>"password"%>
+                  <%= f.submit "zaloguj", :id => "login_button"%>
+            <%end%>
+	</div>
+</div>
