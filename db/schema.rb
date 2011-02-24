@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110206173134) do
+ActiveRecord::Schema.define(:version => 20110223185529) do
 
   create_table "categories", :force => true do |t|
     t.datetime "created_at"
@@ -30,15 +30,15 @@ ActiveRecord::Schema.define(:version => 20110206173134) do
   end
 
   create_table "locations", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "post_id"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
     t.string   "street"
-    t.string   "house_number"
     t.string   "country"
+    t.string   "house_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|
@@ -51,15 +51,17 @@ ActiveRecord::Schema.define(:version => 20110206173134) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
   end
 
-  create_table "uploads", :force => true do |t|
-    t.string   "description"
-    t.integer  "post_id"
-    t.string   "photo_file_name"
-    t.integer  "photo_file_size"
+  create_table "upload_previews", :force => true do |t|
+    t.string   "img_file_name"
+    t.integer  "img_file_size"
+    t.string   "img_content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "post_ident"
+    t.integer  "post_id"
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,12 @@
+<div id="ajaxupload" style="background-color:yellow; width:600px; height:260px;">
+
+      <%= form_for @preview, :html=>{:class=>"upload", :multipart=>true} do |preview|%>      
+        <%= preview.file_field :img%>
+      <%= preview.hidden_field :post_ident %>
+      <%end%>
+<table id="upload_files"></table>
+<table id="download_files"></table>
+<div id="show_pic"></div>
+</div>
+
+

@@ -10,11 +10,11 @@
 
             var settings = {
                 width: "95%",
-                height: "400px",
+                height: "360px",
                 backgroundColor: '#fff',
                 border: '1px solid #ccc',
-                borderRadius: 10,
-                padding: 10,
+                borderRadius: 20,
+                padding: 0,
                 defaultLat: 52.229683, // Warsaw, Poland
                 defaultLng: 21.012175, // Warsaw, Poland
                 gMapMapTypeId: google.maps.MapTypeId.HYBRID,

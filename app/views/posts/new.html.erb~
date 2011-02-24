@@ -1,0 +1,18 @@
+<%form_for @post, :html => {:multipart => true} do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+
+<%= render :partial => 'form', :locals=>{:f => f} %>
+<%=f.submit "Dodaj ogłoszenie", :class => 'send_adv_button'%>
+<%end%>
+
+<div class="uploads" style=" width:600px; height:260px;">
+
+        <%= form_for @preview, :html=>{:class=>"upload", :multipart=>true} do |preview|%>      
+        <%= preview.file_field :img%>
+        <%= preview.hidden_field :post_ident %>
+        <%end%>
+<table id="upload_files"></table>
+<table id="download_files"></table>
+<div id="show_pic"></div>
+
+</div>

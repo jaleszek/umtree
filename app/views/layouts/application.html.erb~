@@ -5,8 +5,13 @@
 
 <title>Sprzedaj starą</title>
 <%= render 'layouts/include_tags'%>
+<script>
+function respondToChange() {
+$('search').up('form').submit()            // The ".up finds the form in the DOM"
+};
+</script>
 </head>
-<body onload="mapaStart()">
+<body>
 	<% if !signed_in? %>
 	  <%= render 'layouts/login_panel' %>
       <%end%>
@@ -34,6 +39,5 @@
 
         <div class="cleaner"></div>
     </div></div>
-
 </body>
 </html>

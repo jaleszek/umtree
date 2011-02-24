@@ -10,10 +10,10 @@
 
             var settings = {
                 width: "95%",
-                height: "400px",
+                height: "360px",
                 backgroundColor: '#fff',
                 border: '1px solid #ccc',
-                borderRadius: 10,
+                borderRadius: 20,
                 padding: 10,
                 defaultLat: 52.229683, // Warsaw, Poland
                 defaultLng: 21.012175, // Warsaw, Poland
@@ -167,7 +167,7 @@
                     visible = true;
                 }
                 
-                $("#submit_button").click(function() {
+                $("#submit_buttons").click(function() {
        
                         resolveAddress();
           

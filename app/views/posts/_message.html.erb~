@@ -1,0 +1,16 @@
+<%if @message=='taken'%>
+  <script>
+$j(document).ready(      
+			  function(){
+    $j('#username').css("background-color", "#DD4F4F");
+    $j('#username_state').text('podany adres znajduje się w bazie');
+});
+  </script>
+<%else%>
+ <script>
+$j(document).ready(      
+			  function(){
+    $j('#username').css("background-color", "#A3EF74");
+});
+  </script>
+<%end%>

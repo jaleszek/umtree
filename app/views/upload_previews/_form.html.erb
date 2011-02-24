@@ -1,0 +1,17 @@
+<%= form_for(@upload_preview) do |f| %>
+  <% if @upload_preview.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@upload_preview.errors.count, "error") %> prohibited this upload_preview from being saved:</h2>
+
+      <ul>
+      <% @upload_preview.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

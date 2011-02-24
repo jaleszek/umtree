@@ -1,0 +1,17 @@
+  <div id="choose_category">
+         <% getCategories%>
+         <%@categories_label.each do |label|%><table> 
+         <tr><td><label style=""><%=label.name %></label></td></tr>
+           <%@categories.each do |category| %>
+             
+               <%if category.parent_id==label.id%>
+             <tr><td>
+                <%=category.name%>
+             </td><td>
+               <%= radio_button('category', '-category','costam')%>
+             </td></tr>
+             <%end%>
+           <%end%></table>
+         <%end%>
+
+        </div>

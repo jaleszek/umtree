@@ -9,68 +9,39 @@
         </ul> 
        
         <div id="first_post_tab">
-		<div class="content_description">Prosimy o wpisanie treści ogłoszenia, dodatkowo tytułu i ceny(wszystkie pola są obowiązkowe). Podane informacje zostaną wyświetlone na stronie z ogłoszeniem. Pasek nad polem treści ogłoszenia umożliwia formatowanie tekstu (nie jest to konieczne i można to wyłączyć). Po uzupełnieniu pól w tej zakładce prosimy o przejście do kolejnych zakładek (zdjęcia - nieobowiązkowa).</div>
-		<table><tr>
-		<td><label>Tytuł ogłoszenia:</label></td>
-		<td><%= f.text_field :title%></td></tr>
-		<tr><td><label>Cena:</label></td><td><%= f.text_field :price, :size => 10 %></td></tr>
-		</table>
-		<%= f.text_area( :content, :cols => 45, :rows => 15, :id => "content_text_area")%>
-
-
-		<script type="text/javascript"> 
-		  Event.observe(window, "load", function() {
-		  TextileEditor.initialize("content_text_area", "extended");
-		  });
-    </script> 
+        <%= render :partial => 'content_fields', :locals=>{ :j => f}%>
       </div> 
       <div id="second_post_tab"> 
-        <div id="uploads">
+       
+      <table id="upload_files"></table>
+<table id="download_files"></table>
+<div id="show_pic"></div>
+
+    <div id="click" style="background-color:red;">klik</div>
 	    </div>
-		<%= f.add_associated_link('add another photo', @post.uploads.build)%>
-	  </div>
 
         <div id="third_post_tab">
           <div class="content_description">
-            Wybierz kategorię najlepiej opisującą ogłoszenie, które masz zamiar opublikować.
+          .Wybierz kategorię najlepiej opisującą ogłoszenie, które masz zamiar opublikować <%= @ident%>
          </div>
-    <div id="choose_category">
-         <% getCategories%>
-         <%@categories_label.each do |label|%><table> 
-         <tr><td><label style=""><%=label.name %></label></td></tr>
-           <%@categories.each do |category| %>
-             
-               <%if category.parent_id==label.id%>
-             <tr><td>
-                <%=category.name%>
-             </td><td>
-               <%= radio_button('category', '-category','costam')%>
-             </td></tr>
-             <%end%>
-           <%end%></table>
-         <%end%>
-
-        </div></div>
+  <%= render :partial=>'category_fields' %>
+  </div>
 <%#wyrzucic do helpera%>
         <div id="fourth_post_tab"> 
           <div class="content_description">
-            Wybierz kategorię najlepiej opisującą ogłoszenie, które masz zamiar opublikować.
+            .Wybierz lokalizację (możliwie najdokładniej) opisującą ogłoszenie
          </div>
-          <div id="adress_container">
-            <%= f.render_associated_form(@post.location, :new => 1)%>
+          <div id="address_container">
+          <%= f.fields_for :location, @post.location do |builder|%>
+            <%= render :partial=>'location_fields', :locals=>{:j => builder} %>       
+          <% end %>
           </div>
-          
-          <label id="submit_buttons" style="background-color: #aaa12;">potwierdz</label>
-          <input id='withcallback' type="text" style="display:none;" />
-
-          <div id="map" style="width:100%;"></div>
+          <div id="map"></div>
         </div>
         <div id="fifth_post_tab"> 
  test
         </div>
         <div id="sixth_post_tab"> 
-
         </div>
 	  
-</div>  
-	   
+<%= render :partial => 'shared/settings_menu'%>

@@ -1,0 +1,11 @@
+<div id="templatemo_footer">       
+	<ul class="footer_menu">
+      	<li><a href="#">Home</a></li>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Templates</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Blog</a></li>
+            <li class="last_menu"><a href="#">Contact</a></li>
+      </ul>
+Copyright © 2048 <a href="#">Your Company Name</a> | <a href="http://www.iwebsitetemplate.com" target="_parent">Website Templates</a> by <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a> 
+        </div>
