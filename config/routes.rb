@@ -1,13 +1,16 @@
 Sprzedaj::Application.routes.draw do
+
+  get "pages/contact"
+  get "pages/help"
+
   resources :upload_previews
-
   resources :locations
-
   resources :categories
 
   get "sessions/new"
   get "posts/validate"
   get "uploads/show"
+
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :posts
@@ -17,7 +20,7 @@ Sprzedaj::Application.routes.draw do
 
   match "/show_pic" => "upload_previews#show_pic"
   match "posts/upload_previews/:id/destroy" => "upload_previews#destroy"
-  root :to => 'users#index'
+  root :to => 'pages#home'
 
   
   # The priority is based upon order of creation:
