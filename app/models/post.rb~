@@ -17,13 +17,18 @@
 
 class Post < ActiveRecord::Base
   #attr_accessible :price, :content, :alt_city, :alt_street, :title, :category_id, :user_id, :alt_email, :username
+  username_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   belongs_to :user
   belongs_to :category
   has_one :location, :dependent=> :destroy
-
+  validates :content, :presence =>true, :length =>{:within=>20..400}
+  validates :title, :presence=>true, :length=>{:within=>10..40}
+  validates :category_id, :presence=>true
+  validates :username, :presence=>true, :format=>{:with=>username_regex}
   after_save :saveUpload
   after_initialize :ident
-  accepts_nested_attributes_for :locations, :allow_destroy => true
+  before_save :default_values
+  accepts_nested_attributes_for :location, :allow_destroy => true
 
   def self.search(string)
     Posts.find_by_email(string)
@@ -47,7 +52,12 @@ end
     preview.update_attributes(:post_id=>self.id)
    end
   end
+  
+  private 
 
+  def default_values
+     self.price||="0"
+  end
 end
 
 

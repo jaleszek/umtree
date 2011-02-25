@@ -44,8 +44,6 @@ if(file.result !='error'){
                   $j('#upload_preview_img').click();
 
                    });
-                 $j('#upload_preview_img').hide();
-                 $j('new_upload_preview').hide();
 //-----------------------------------------------------------------------
                 $j('#disable_formatting').click(function(){
                   $j(this).css("display","none");

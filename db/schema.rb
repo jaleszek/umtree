@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110223185529) do
+ActiveRecord::Schema.define(:version => 20110224234316) do
 
   create_table "categories", :force => true do |t|
     t.datetime "created_at"
@@ -22,11 +22,6 @@ ActiveRecord::Schema.define(:version => 20110223185529) do
     t.integer  "ancestors_count"
     t.integer  "descendants_count"
     t.integer  "position"
-  end
-
-  create_table "dupas", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "locations", :force => true do |t|
@@ -46,8 +41,6 @@ ActiveRecord::Schema.define(:version => 20110223185529) do
     t.integer  "user_id"
     t.string   "price"
     t.string   "content"
-    t.string   "alt_city"
-    t.string   "alt_street"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -7,7 +7,7 @@
 		<li><a class="#fifth_post_tab">Regulamin</a></li> 
 		<li id="promo"><a class="#sixth_post_tab">Promuj</a></li>
         </ul> 
-       
+     
         <div id="first_post_tab">
         <%= render :partial => 'content_fields', :locals=>{ :j => f}%>
       </div> 
@@ -32,7 +32,7 @@
             .Wybierz lokalizację (możliwie najdokładniej) opisującą ogłoszenie
          </div>
           <div id="address_container">
-          <%= f.fields_for  @post.location do |builder|%>
+          <%= f.fields_for :location, @post.location do |builder|%>
             <%= render :partial=>'location_fields', :locals=>{:j => builder} %>       
           <% end %>
           </div>

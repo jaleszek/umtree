@@ -3,13 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>Sprzedaj starą</title>
+<title>Sprzedaj starą <%= @title%></title>
 <%= render 'layouts/include_tags'%>
-<script>
-function respondToChange() {
-$('search').up('form').submit()            // The ".up finds the form in the DOM"
-};
-</script>
 </head>
 <body>
 	<% if !signed_in? %>

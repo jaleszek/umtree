@@ -19,7 +19,7 @@ class Category < ActiveRecord::Base
 
   acts_as_ordered_tree :foreign_key => :parent_id
   attr_accessible :foreign_key, :parent_id, :name
-
+  validates
   has_many :posts
   
   def self.findCategory

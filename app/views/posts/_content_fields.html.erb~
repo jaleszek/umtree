@@ -1,4 +1,3 @@
-		<div class="content_description">Prosimy o wpisanie treści ogłoszenia, dodatkowo tytułu i ceny(wszystkie pola są obowiązkowe). Podane informacje zostaną wyświetlone na stronie z ogłoszeniem. Pasek nad polem treści ogłoszenia umożliwia formatowanie tekstu (nie jest to konieczne i można to wyłączyć). Po uzupełnieniu pól w tej zakładce prosimy o przejście do kolejnych zakładek (zdjęcia - nieobowiązkowa).</div>
 		<table><tr>
 		<td><label>Tytuł ogłoszenia:</label></td>
 		<td><%= j.text_field :title%></td></tr>
@@ -10,9 +9,11 @@
     <%= j.text_area( :content, :cols => 45, :rows => 15, :id => "content_text_area")%><div id="message"></div>
     <% if !signed_in? %>
       <%= j.text_field :username,:id => 'username' %><label id="username_state"></label>
-      <%= text_field_tag :ident, :id=>'ident_tag', @post.getIdent %>
+      <%= hidden_field_tag :ident, @post.getIdent %>
       <%= observe_field :username, :with=>"username", :frequency=>0.25, :url=>{:action=>:validate, :controller=>:posts},
       :update=>"message", :method=>:get%>
+    <%else%>
+    <%= j.hidden_field :username, :id=>'username', :value=>current_user.email%>
     <% end %>
 
 

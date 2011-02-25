@@ -12,10 +12,13 @@ class PostsController < ApplicationController
 end
 
   def new
+    @title="Nowe ogloszenie"
     @post = Post.new
     
     @preview =UploadPreview.new(:post_ident=>@post.getIdent)
     @post.build_location
+    @categories=Category.all
+    @categories_label = Category.find_by_sql("select*from Categories where parent_id=22")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,9 +37,11 @@ end
     content = @post.content
     ident_= params[:ident]
     @post.ident=ident_    
+    @post.category_id=params[:category][:id]
     logger.debug("controllercreate #{ident_}")
+    @post.accept_terms=params[:terms][:accept]
     #logger.debug "Post attribute#{@post.uploads}"
-
+    
     respond_to do |format|
       if @post.save!
         format.html { redirect_to(@post, :notice => 'Category was successfully created.') }

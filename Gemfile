@@ -10,6 +10,7 @@ gem 'annotate-models', '1.0.4'
 gem 'faker', '0.3.1'
 gem 'will_paginate', '3.0.pre2'
 gem 'paperclip',  :git=>'git://github.com/thoughtbot/paperclip.git'
+gem 'rspec-rails', '2.5.0'
 # Use unicorn as the web server
 # gem 'unicorn'
 
