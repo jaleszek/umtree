@@ -1,0 +1,9 @@
+<div id="posts">
+<%= will_paginate @posts%>
+  <% @posts.each do |post| %> 
+    <div class="post_small">
+      <%= post.content %>
+    </div>
+  <% end %>
+<%= will_paginate @posts%>
+</div>

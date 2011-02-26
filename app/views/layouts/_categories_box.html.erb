@@ -1,10 +1,11 @@
 <div id="categories_box">
-<%getCategories %>
+
 
 <% Category.findCategory.each do |label| %>
   <div> <tr><td colspan="2">
     <span class="root_node_category">
-      <img src="images/plus_icon.jpg" style="position:relative;top:3px;"> </img>
+      <%= image_tag 'plus_icon.jpg', :options=>{:style=>"position:relative; top:3px;"}%>
+
 	 <%= label.name %>
     </span> </td><td></td></tr></div>
 

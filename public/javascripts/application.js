@@ -85,7 +85,7 @@ if(file.result !='error'){
 				  });
 				$j("#close_button").click(
 				  function(){	
-					 hideMsg();
+					 hideLoginMsg();
 				  }
 				);
 				$j("#city_label").click(
@@ -102,15 +102,11 @@ if(file.result !='error'){
 						div_up.next().animate({height:'toggle'});
 					}
 				);
-				$j(".sliding_categories_div").each(function(){
-					var div_up = $j(this).closest("div");
-					if($j(this).css("display")=="none"){
-						
-						div_up.children().find("img").attr({src: 'images/minus_icon.jpg'});
-					}
-					else{
-					     	div_up.children().find("img").attr({src: 'images/plus_icon.jpg'});
-					}						
+				$j("sliding_categories_div").each(function(){
+                    //var button_id=$j(this).attr('id');
+					//var img_up = $j('img.'+button_id);
+      
+				 
 				});
 			});
 			function hideLoginMsg(){

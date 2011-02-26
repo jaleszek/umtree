@@ -1,6 +1,6 @@
 <div id="login_panel">
-
-  <%=image_tag 'close.png', :id=>'close_button'%>
+	<img src="images/close.png" id="close_button"></img>
+  <%=image_tag 'close.png'%>
 	<span>Aby móc korzystać z tej funkcji musisz być zalogowany <%= link_to "zarejestruj", signup_path %></span>
 		<div>
               <%= form_for(:session, :url => sessions_path) do |f|%>
