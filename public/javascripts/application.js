@@ -44,6 +44,9 @@ if(file.result !='error'){
                   $j('#upload_preview_img').click();
 
                    });
+//------------------------------------choosing search filter- category---------------
+
+           
 //-----------------------------------------------------------------------
                 $j('#disable_formatting').click(function(){
                   $j(this).css("display","none");

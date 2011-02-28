@@ -10,7 +10,26 @@ gem 'annotate-models', '1.0.4'
 gem 'faker', '0.3.1'
 gem 'will_paginate', '3.0.pre2'
 gem 'paperclip',  :git=>'git://github.com/thoughtbot/paperclip.git'
-gem 'rspec-rails', '2.5.0'
+
+group :test do
+  gem 'rspec-rails', '2.5.0'
+  gem 'spork', '0.9.0.rc3'
+end
+
+gem 'hirb'
+gem 'acts_as_tree'
+gem 'RedCloth'
+gem 'rmagick'
+gem 'nifty-generators'
+gem 'nested_set'
+gem 'jquery-rails'
+gem 'gravatar_image_tag'
+gem 'heroku'
+#doesn't work with rails3
+#gem 'rd_searchlogic', :require => 'searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
+gem "meta_search"
+gem "meta_where"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

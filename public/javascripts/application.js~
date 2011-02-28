@@ -44,6 +44,13 @@ if(file.result !='error'){
                   $j('#upload_preview_img').click();
 
                    });
+//------------------------------------choosing search filter- category---------------
+
+                $j('#search_category div').click(
+                   function(){
+                alert('a');
+                   }
+                 );
 //-----------------------------------------------------------------------
                 $j('#disable_formatting').click(function(){
                   $j(this).css("display","none");
@@ -103,8 +110,8 @@ if(file.result !='error'){
 					}
 				);
 				$j("sliding_categories_div").each(function(){
-                    var button_id=$j(this).attr('id');
-					var img_up = $j('img.'+button_id);
+                    //var button_id=$j(this).attr('id');
+					//var img_up = $j('img.'+button_id);
       
 				 
 				});

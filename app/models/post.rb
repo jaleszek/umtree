@@ -16,9 +16,9 @@
 #
 
 class Post < ActiveRecord::Base
-  
-  #attr_accessible :price, :content, :alt_city, :alt_street, :title, :category_id, :user_id, :alt_email, :username
+      #attr_accessible :price, :content, :alt_city, :alt_street, :title, :category_id, :user_id, :alt_email, :username
   username_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  price_regex = []
   belongs_to :user
   belongs_to :category
   has_one :location, :dependent=> :destroy
@@ -29,12 +29,8 @@ class Post < ActiveRecord::Base
   after_save :saveUpload
   after_initialize :ident
   before_save :default_values
-  accepts_nested_attributes_for :location, :allow_destroy => true
-
-  def self.search(string)
-    Posts.find_by_email(string)
-  end
-
+  accepts_nested_attributes_for :location, :allow_destroy => true 
+ 
 def getIdent
 @ident
 end
@@ -43,10 +39,11 @@ def ident=(id_)
 end
 
   def ident
-    logger.debug'kolejne wywolanie ident1 #{getIdent}'
     @ident=((1..20).to_a).shuffle[1..10].join 
   end
-
+def accept_terms=(bool)
+  
+end 
   def saveUpload
     logger.debug"ajdi#{@ident}"
     UploadPreview.find_each(:conditions=>{:post_ident=>@ident}) do |preview|

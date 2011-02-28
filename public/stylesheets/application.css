@@ -687,4 +687,15 @@ padding:0;
 .footer_menu .last_menu {
 	border: none;
 }
+
 /* end of footer */
+
+#search_category div:hover{
+    background-color:#9F9F9F; 
+   }
+#search_category div.unclicked{
+    background-color: #2c7471;
+}
+#search_category div.clicked{
+    background-color:#595757; 
+   }
