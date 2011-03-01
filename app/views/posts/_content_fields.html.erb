@@ -1,20 +1,38 @@
-		<table><tr>
-		<td><label>Tytuł ogłoszenia:</label></td>
-		<td><%= j.text_field :title%></td></tr>
-		<tr><td><label>Cena:</label></td><td><%= j.text_field :price, :size => 10 %></td></tr>
-		</table>
-    <div id="content_settings">
-      <a>Opcje</a>
-    </div>	
-    <%= j.text_area( :content, :cols => 45, :rows => 15, :id => "content_text_area")%><div id="message"></div>
-    <% if !signed_in? %>
-      <%= j.text_field :username,:id => 'username' %><label id="username_state"></label>
-      <%= hidden_field_tag :ident, @post.getIdent %>
-      <%= observe_field :username, :with=>"username", :frequency=>0.25, :url=>{:action=>:validate, :controller=>:posts},
+<table>
+  <tr>
+    <td>
+      <label>Tytuł ogłoszenia:</label>
+    </td>
+    <td>
+      <%= j.text_field :title%>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label>Cena:</label>
+    </td>
+    <td>
+      <%= j.text_field :price, :size => 10 %>
+    </td>
+  </tr>
+</table>
+  <div id="content_settings">
+    <a>Opcje</a>
+  </div>	
+  <%=j.text_area( :content, :cols => 45, :rows => 15, :id => "content_text_area")%>
+  <div id="message"></div>
+
+  <% if !signed_in? %>
+    <%=j.text_field :username,:id => 'username' %>
+
+    <label id="username_state"></label>
+
+    <%=hidden_field_tag :ident, @post.getIdent %>
+    <%=observe_field :username, :with=>"username", :frequency=>0.25, :url=>{:action=>:validate, :controller=>:posts},
       :update=>"message", :method=>:get%>
-    <%else%>
+  <%else%>
     <%= j.hidden_field :username, :id=>'username', :value=>current_user.email %>
-    <% end %>
+  <% end %>
 
 
 

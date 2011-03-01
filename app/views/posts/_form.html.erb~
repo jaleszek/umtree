@@ -39,7 +39,7 @@
           <div id="map"></div>
         </div>
         <div id="fifth_post_tab"> 
- test
+          <%= render :partial=>'terms'%>
         </div>
         <div id="sixth_post_tab"> 
         </div>

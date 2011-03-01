@@ -1,47 +1,49 @@
- <div class="create_post"> 
-        <ul class="create_post_navigation"> 
-            <li><a class="#first_post_tab">Treść</a></li> 
-            <li><a class="#second_post_tab">Zdjęcia</a></li> 
-		<li><a class="#third_post_tab">Kategoria</a></li> 
-            <li><a class="#fourth_post_tab">Dane teleadresowe</a></li> 
-		<li><a class="#fifth_post_tab">Regulamin</a></li> 
-		<li id="promo"><a class="#sixth_post_tab">Promuj</a></li>
-        </ul> 
+<div class="create_post"> 
+  <ul class="create_post_navigation"> 
+    <li><a class="#first_post_tab">Treść</a></li> 
+    <li><a class="#second_post_tab">Zdjęcia</a></li> 
+    <li><a class="#third_post_tab">Kategoria</a></li> 
+    <li><a class="#fourth_post_tab">Dane teleadresowe</a></li> 
+    <li><a class="#fifth_post_tab">Regulamin</a></li> 
+	  <li id="promo"><a class="#sixth_post_tab">Promuj</a></li>
+  </ul> 
      
-        <div id="first_post_tab">
-        <%= render :partial => 'content_fields', :locals=>{ :j => f}%>
-      </div> 
-      <div id="second_post_tab"> 
-       
-      <table id="upload_files"></table>
-<table id="download_files"></table>
-<div id="show_pic"></div>
-
+  <div id="first_post_tab">
+    <%=render :partial => 'content_fields', :locals=>{ :j => f}%>
+  </div> 
+ 
+  <div id="second_post_tab">   
+    <table id="upload_files"></table>
+    <table id="download_files"></table>
+  <div id="show_pic"></div>
     <div id="click" style="background-color:red;">klik</div>
-	    </div>
+	</div>
 
-        <div id="third_post_tab">
-          <div class="content_description">
-          .Wybierz kategorię najlepiej opisującą ogłoszenie, które masz zamiar opublikować <%= @ident%>
-         </div>
-  <%= render :partial=>'category_fields' %>
+  <div id="third_post_tab">
+    <div class="content_description">
+      Wybierz kategorię najlepiej opisującą ogłoszenie, które masz zamiar opublikować
+    </div>
+    <%= render :partial=>'category_fields' %>
   </div>
 <%#wyrzucic do helpera%>
-        <div id="fourth_post_tab"> 
-          <div class="content_description">
-            .Wybierz lokalizację (możliwie najdokładniej) opisującą ogłoszenie
-         </div>
-          <div id="address_container">
-          <%= f.fields_for :location, @post.location do |builder|%>
-            <%= render :partial=>'location_fields', :locals=>{:j => builder} %>       
-          <% end %>
-          </div>
-          <div id="map"></div>
-        </div>
-        <div id="fifth_post_tab"> 
-          <%= render :partial=>'terms'%>
-        </div>
-        <div id="sixth_post_tab"> 
-        </div>
-	  
+
+  <div id="fourth_post_tab"> 
+    <div class="content_description">
+      Wybierz lokalizację (możliwie najdokładniej) opisującą ogłoszenie
+    </div>
+    <div id="address_container">
+      <%= f.fields_for :location, @post.location do |builder|%>
+        <%= render :partial=>'location_fields', :locals=>{:j => builder} %>       
+      <% end %>
+    </div>
+    <div id="map"></div>
+  </div>
+
+  <div id="fifth_post_tab"> 
+    <%= render :partial=>'terms'%>
+  </div>
+
+  <div id="sixth_post_tab"> 
+  </div>
+
 <%= render :partial => 'shared/settings_menu'%>

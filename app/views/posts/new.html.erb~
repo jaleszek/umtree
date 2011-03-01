@@ -11,8 +11,6 @@
         <%= preview.file_field :img%>
         <%= preview.hidden_field :post_ident %>
         <%end%>
-<table id="upload_files"></table>
-<table id="download_files"></table>
-<div id="show_pic"></div>
+
 
 </div>

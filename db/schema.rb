@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20110228170637) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
-    t.integer  "price"
+    t.float    "price"
   end
 
   create_table "upload_previews", :force => true do |t|

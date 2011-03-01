@@ -1,20 +1,23 @@
 class PostsController < ApplicationController
- def validate
-   username=params[:username]
-   user=User.find_by_email(username)
-   if user.nil?
-     message='free'
- else
-   message='taken'
-   end
-  @message=message
+
+  # username taken validation, ajax
+  def validate
+    username=params[:username]
+    user=User.find_by_email(username)
+
+    if user.nil?
+      message='free'
+    else
+      message='taken'
+    end
+
+    @message=message
     render :partial=>'message'
-end
+  end
 
   def new
     @title="Nowe ogloszenie"
-    @post = Post.new
-    
+    @post = Post.new    
     @preview =UploadPreview.new(:post_ident=>@post.getIdent)
     @post.build_location
     @categories=Category.all
@@ -33,7 +36,6 @@ end
     #params_temp.merge!(:location_attributes=>location_temp)
 
     @post = Post.new(params[:post])
-    
     content = @post.content
     ident_= params[:ident]
     @post.ident=ident_    
@@ -53,65 +55,69 @@ end
     end
   end
 
-
- def show
+  def show
     @post = Post.find(params[:id])
-      respond_to do |format|
-       format.html  
-   end
-  end
-
-def index
-
-  #fields
-  keyword=params[:keyword]
-  price_right=params[:price_right]
-  price_left=params[:price_left]
-  categories_ids=params[:categoriesids]
-
-  #convert to array
-  categories_ids_array=categories_ids.scan(/\d+/)
-
-  #flags
-  one_word=params[:one_word]
-  keyword_in_title=params[:key_word_in_title]
-  keyword_in_content=params[:key_word_in_content]
-  case_sensitive=params[:case_sensitive]
-  photo_added=params[:photo_added]
-  own_deliv=params[:own_deliv]
-  params_out={}
-
-  #title, content
-  if keyword_in_title=='1' and keyword_in_content.nil?
-    if one_word=='1'
-      params_out[:title_equals]=keyword.to_s
-    else
-      params_out[:title_contains]=keyword.to_s
-    end
-  elsif keyword_in_content=='1' and keyword_in_title.nil?
-    if one_word=='1'
-      params_out[:content_equals]=keyword.to_s
-    else
-      params_out[:content_contains]=keyword.to_s
-    end
-  elsif keyword_in_content.nil? and keyword_in_title.nil?
-    if one_word=='1'
-      params_out[:content_or_title_equals]=keyword.to_s
-    else
-      params_out[:content_or_title_contains]=keyword.to_s
+    respond_to do |format|
+      format.html  
     end
   end
-  #price
-  if price_left.to_i<=0 and price_right.to_i<=0
-    flash={:error=>'incorrect price range'}
-  else
-    params_out[:price_gte]=price_left.to_i
-    params_out[:price_lte]=price_right.to_i
-  end
-  params_out[:category_id_in]=categories_ids_array
-  logger.debug"paramsarray #{params_out}"
-  @search=Post.search(params_out)
-  logger.debug("@search rowna sie #{@search.all}")
-  @posts=@search.paginate(:page=>params[:page], :per_page=>10)
+
+  def index
+
+    #fields
+    keyword=params[:keyword]
+    price_right=params[:price_right]
+    price_left=params[:price_left]
+    categories_ids=params[:categoriesids]
+
+    #convert to array
+    categories_ids_array=categories_ids.scan(/\d+/) if !categories_ids.nil?
+
+    #flags
+    one_word=params[:one_word]
+    keyword_in_title=params[:key_word_in_title]
+    keyword_in_content=params[:key_word_in_content]
+    case_sensitive=params[:case_sensitive]
+    photo_added=params[:photo_added]
+    own_deliv=params[:own_deliv]
+    params_out={}
+
+    #title, content
+    if keyword_in_title=='1' and keyword_in_content.nil?
+      if one_word=='1'
+        params_out[:title_equals]=keyword.to_s
+      else
+        params_out[:title_contains]=keyword.to_s
+      end
+    elsif keyword_in_content=='1' and keyword_in_title.nil?
+      if one_word=='1'
+        params_out[:content_equals]=keyword.to_s
+      else
+        params_out[:content_contains]=keyword.to_s
+      end
+    elsif keyword_in_content.nil? and keyword_in_title.nil?
+      if one_word=='1'
+        params_out[:content_or_title_equals]=keyword.to_s
+      else
+        params_out[:content_or_title_contains]=keyword.to_s
+      end
+    end
+    
+    #price
+    if price_left.to_i<=0 and price_right.to_i<=0
+      flash={:error=>'incorrect price range'}
+    else
+      params_out[:price_gte]=price_left.to_i
+      params_out[:price_lte]=price_right.to_i
+    end
+
+    #category id
+    params_out[:category_id_in]=categories_ids_array
+
+    logger.debug"paramsarray #{params_out}"
+
+    @search=Post.search(params_out)
+    logger.debug("@search rowna sie #{@search.all}")
+    @posts=@search.paginate(:page=>params[:page], :per_page=>10)
   end
 end

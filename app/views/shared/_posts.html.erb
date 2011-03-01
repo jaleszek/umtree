@@ -1,0 +1,23 @@
+<div class="post_small">
+
+<div style="float:right;width:70%;height:90%;overflow:hidden;">
+  <p>
+    <b><%= link_to j.title, j%></b>
+  </p>
+  <p class="content">
+    <%= j.content %>
+  </p>
+  <p>
+    <%= j.created_at%>
+  </p>
+</div>
+<div style="padding:10px;width:30%;">
+  <p>
+<% if j.upload_previews.first.nil?%>
+  <%=image_tag("brak_zdjecia.png", :height=>"80", :width=>"80")%>
+<%else%>
+  <%= image_tag(j.upload_previews.first.img.url, :height=>"80", :width=>"80")%>
+<%end%>  
+  </p>
+</div>
+</div>

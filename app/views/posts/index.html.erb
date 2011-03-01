@@ -1,4 +1,45 @@
-<%= form_tag(posts_path, :method=>"get") do%>
+<script>
+$j(document).ready(
+  function(){
+    $j('#scroll_up').click(function(){
+      $j('body').scrollTo(0,800,{queue:true});
+    });
+    $j('#scroll_down').click(function(){
+      $j('body').scrollTo(500,800,{queue:true});
+    });
+    $j('#clear_search_button').click(function(){
+      $j('#search_form input').each(function(){
+        if($j(this).attr("name")!='commit'){
+          $j(this).val('');
+          $('#search_category div')
+          if($j(this).attr("type")=='checkbox'){
+            $j(this).removeAttr("checked");
+          }
+        }
+      });
+    });
+    $j('#search_category div').click(
+      function(){ 
+        var category_id = $j(this).attr('id');
+        var id = category_id.substr(category_id.length-2,2);
+        if($j(this).attr('class')=='unclicked'){                    
+          $j(this).attr('class', 'clicked');                   
+          var current_text = $j('#categories_ids').val();
+          $j('#categories_ids').val(current_text + ' ' + id.toString());            
+        }
+        else{ 
+          $j(this).attr('class','unclicked'); 
+          var regex_id='^'+id+'$';
+          var current_val=$j('#categories_ids').val();
+          $j('#categories_ids').val(current_val.replace(id, ''));            
+        }
+      }
+    );
+  }
+);
+</script>
+
+<%= form_tag(posts_path, :method=>"get", :id=>'search_form') do%>
 <p>
   <%= label_tag 'Szukana fraza'%>
   <%= search_field_tag 'keyword'%>
@@ -32,51 +73,39 @@
 
   <%= label_tag'odbiór osobisty'%>
   <%= check_box_tag'own_deliv'%>
-<%= label_tag 'ids'%>
+  <%= label_tag 'ids'%>
 
-<%=text_field_tag "categoriesids",'', :id=>"categories_ids"%>
+  <%=text_field_tag "categoriesids",'', :id=>"categories_ids"%>
+</p>
+
 <div id='search_category' style="border:1px solid #fff; width:400px; height:150px;">
-<script>
-$j(document).ready(
-  function(){
-    
-                  $j('#search_category div').click(
-                   function(){ 
-                     var category_id = $j(this).attr('id');
-                     var id = category_id.substr(category_id.length-2,2);
-                     if($j(this).attr('class')=='unclicked'){
-                     
-                       $j(this).attr('class', 'clicked');
-                      
-                       
-                       var current_text = $j('#categories_ids').val();
-                       $j('#categories_ids').val(current_text + ' ' + id.toString());
-                      
-                     }
-                     else{ 
-                       $j(this).attr('class','unclicked'); 
-                       var regex_id='^'+id+'$';
-                       var current_val=$j('#categories_ids').val();
-                       $j('#categories_ids').val(current_val.replace(id, ''));
-                       
-                     }
-                   }
-                 );
-  }
-);
-</script>
-<%= Category.find_each do |x| %>
-  <div class='unclicked' id=category<%=x.id%> style="width:70px; heigth:30px;background-color:#12345;border:1px solid #fff;float:left;">
-    <%= x.name%>
-  </div>
-<%end%>
+  <%=Category.find_each do |x| %>
+    <div class='unclicked' id=category<%=x.id%> style="width:70px; heigth:30px;background-color:#12345;border:1px solid #fff;float:left;">
+      <%=x.name%>
+    </div>
+  <%end%>
 </div>
-<%= submit_tag'szukaj'%>
+
+<%=submit_tag'szukaj'%>
+
 <%end%>
-<%= sort_link @search, :content%>
-<%= sort_link @search, :price%>
+
+<%=content_tag(:button, 'wyczyść', :id=>'clear_search_button')%>
 
 <% for post in @posts%>
   <div><%=post.content%></div>
 <%end%>  
   <%=will_paginate @posts%>
+<div id="right_menu" style="width:40px; height:150px; background-color:#2c7471;
+-webkit-border-radius:10px 10px 10px 10px;position:fixed;right:0px; bottom:200px;">
+  <div id="scroll_up" style="width:90%;height:40px;text-align:center;cursor:default;font-weight:bold;padding-top:3px;-webkit-border-radius:10px 10px
+10px 10px;">
+    Up
+  </div>
+  <div id="scroll_down" style="width:90%;height:40px;text-align:center;cursor:default;font-weight:bold;padding-top:3px;-webkit-border-radius:10px 10px
+10px 10px;">
+    Down
+  </div>
+  
+</div>
+

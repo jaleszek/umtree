@@ -7,7 +7,7 @@ var $j = jQuery.noConflict();
                 Event.observe(window, "load", function() {
 		        TextileEditor.initialize("content_text_area", "extended");
 
-//---------------------------------upload
+//---------------------------------upload----------------------------------
     $j('.photo_lightbox').lightBox({fixedNavigation:true});
  
   $j('.upload').fileUploadUI({
@@ -39,15 +39,14 @@ if(file.result !='error'){
   return $j('<script>alert("za duza ilosc zalaczników");<\/script>');}
   }
     });
-//----------------------------------delete----------------------------------------
+//----------------------------------upload----------------------------------------
                 $j('#click').click(function(){
                   $j('#upload_preview_img').click();
 
                    });
-//------------------------------------choosing search filter- category---------------
-
-           
-//-----------------------------------------------------------------------
+//----------------------------------scroll up-------------------------------------
+              
+//--------------------------------------------------------------------------------
                 $j('#disable_formatting').click(function(){
                   $j(this).css("display","none");
                   $j('#enable_formatting').css("display", "block");

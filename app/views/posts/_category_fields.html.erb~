@@ -1,17 +1,27 @@
-  <div id="choose_category">
+<div id="choose_category">
 
-         <%@categories_label.each do |label|%><table> 
-         <tr><td><label style=""><%=label.name %></label></td></tr>
-           <%@categories.each do |category| %>
-             
-               <%if category.parent_id==label.id%>
-             <tr><td>
-                <%=category.name%>
-             </td><td>
-               <%= radio_button('category', 'id',category.id)%>
-             </td></tr>
-             <%end%>
-           <%end%></table>
-         <%end%>
+  <%getCategories%>
 
-        </div>
+  <%@categories_label.each do |label|%>
+
+    <table> 
+      <tr><td>
+        <label>
+          <%=label.name %>
+        </label>
+      </td></tr>
+
+      <%@categories.each do |category| %>      
+        <%if category.parent_id==label.id%>
+          <tr><td>
+            <%=category.name%>
+          </td><td>
+            <%= radio_button('category', 'id',category.id)%>
+          </td></tr>
+        <%end%>
+      <%end%>
+    </table>
+
+   <%end%>
+
+</div>

@@ -1,26 +1,62 @@
 <table>
-<tr>
-<td><%= j.label "miasto"%></td>
-<td> <%= j.text_field :city, :class=>'city' %></td>
-<td></td>
-<td><%= j.label "ulica"%></td>
-<td><%= j.text_field :street, :class=>'street' %></td>
-<td></td>
-<td><label id="submit_buttons">wyslij</label></td>
-</tr><tr>
-<td><%= j.label "numer lokalu"%></td>
-<td><%= j.text_field :house_number, :class=>'house_number' %></td>
-<td></td>
-<td><%= j.label "województwo"%></td>
-<td><%= j.text_field :state, :class=>'state' %></td>
-<td></td>
-</tr><tr>
-<td><%= j.label "kraj"%></td>
-<td><%= j.text_field :country %></td>
-<td></td>
-<td><%= j.label "kod pocztowy"%></td>
-<td><%= j.text_field :zip %></td>
-<td></td></tr>
+  <tr>
+    <td>
+      <%= j.label "miasto"%>
+    </td>
+    <td> 
+      <%= j.text_field :city, :class=>'city' %>
+    </td>
+    <td>
+    </td>
+    <td>
+      <%= j.label "ulica"%>
+    </td>
+    <td>
+      <%= j.text_field :street, :class=>'street' %>
+    </td>
+    <td>
+    </td>
+    <td>
+      <label id="submit_buttons">
+        wyslij
+      </label>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= j.label "numer lokalu"%>
+    </td>
+    <td>
+      <%= j.text_field :house_number, :class=>'house_number' %>
+    </td>
+    <td>
+    </td>
+    <td>
+      <%= j.label "województwo"%>
+    </td>
+    <td>
+      <%= j.text_field :state, :class=>'state' %>
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td> 
+      <%= j.label "kraj"%>
+    </td>
+    <td>
+      <%= j.text_field :country %>
+    </td>
+    <td>
+    </td>
+    <td>
+      <%= j.label "kod pocztowy"%>
+    </td>
+    <td>
+      <%= j.text_field :zip %>
+    </td>
+    <td>
+    </td>
+  </tr>
 </table>   
 <input id="withcallback" type="text" style="display:none;"/>
-
