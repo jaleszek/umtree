@@ -1,11 +1,20 @@
 <script>
 $j(document).ready(
   function(){
+    $j('.category_labels').click(function(){
+      $j(this).parent('div').children('div').animate({height:'toggle'});
+    });
+    $j('#show_categories_chooser').click(function(){
+      $j('#search_category').animate({height:'toggle'});
+    });
+    $j('#search_hide').click(function(){
+      $j('#search_form').animate({height:'toggle'});	
+    });
     $j('#scroll_up').click(function(){
       $j('body').scrollTo(0,800,{queue:true});
     });
     $j('#scroll_down').click(function(){
-      $j('body').scrollTo(500,800,{queue:true});
+      $j('body').scrollTo(2500,800,{queue:true});
     });
     $j('#clear_search_button').click(function(){
       $j('#search_form input').each(function(){
@@ -18,10 +27,10 @@ $j(document).ready(
         }
       });
     });
-    $j('#search_category div').click(
+    $j('#search_category>div>div').click(
       function(){ 
         var category_id = $j(this).attr('id');
-        var id = category_id.substr(category_id.length-2,2);
+       
         if($j(this).attr('class')=='unclicked'){                    
           $j(this).attr('class', 'clicked');                   
           var current_text = $j('#categories_ids').val();
@@ -38,72 +47,92 @@ $j(document).ready(
   }
 );
 </script>
-
+<div><label id="search_hide"> wyszukiwanie</label></div>
 <%= form_tag(posts_path, :method=>"get", :id=>'search_form') do%>
+<h2>
+  Wyszukiwanie ogłoszeń
+</h2>
+<table>
+
 <p>
+<tr><td><%=submit_tag'szukaj'%></td><td><label id="clear_search_button">wyczysc</label></td></tr>
+<tr><td>
   <%= label_tag 'Szukana fraza'%>
+</td><td>
   <%= search_field_tag 'keyword'%>
+</td></tr>
 </p>
+
 <p>
-  <%=label_tag 'szukaj jako pojedyńczego słowa'%>
-  <%= check_box_tag 'one_word'%>
-
-  <%=label_tag 'szukaj tylko w tytułach'%>
-  <%=check_box_tag 'keyword_in_title'%>
-
-  <%=label_tag 'szukaj tylko w treści'%>
-  <%= check_box_tag 'keyword_in_content'%>
-
-  <%=label_tag'wielkość liter brana pod uwagę'%>
-  <%=check_box_tag 'case_sensitive'%>
+<tr>
+  <td><%=label_tag 'pojedyńcze słowo'%></td>
+  <td><%= check_box_tag 'one_word'%></td>
+</tr>
+<tr>
+  <td><%=label_tag 'szukaj tylko w tytułach'%></td>
+  <td><%=check_box_tag 'keyword_in_title'%></td>
+</tr>
+<tr>
+  <td><%=label_tag 'szukaj tylko w treści'%></td>
+  <td><%= check_box_tag 'keyword_in_content'%></td>
+</tr>
+<tr>
+  <td><%=label_tag'wielkość liter'%></td>
+  <td><%=check_box_tag 'case_sensitive'%></td>
   
 </p>
 <p>
-  <%=label_tag'zakres cenowy'%>
-
-  <%=text_field_tag'price_left','',:size=>8%> -
-  <%= text_field_tag'price_right', '', :size=>8%>
-
-  <%=label_tag'za darmo'%>
-  <%= check_box_tag'for_free'%>
+  <tr><td><%=label_tag'zakres cenowy'%></td>
+  <td><%=text_field_tag'price_left','',:size=>5%> -
+  <%= text_field_tag'price_right', '', :size=>5%></td>
+ </tr>
+ <tr>
+  <td><%=label_tag'za darmo'%></td>
+  <td><%= check_box_tag'for_free'%></td>
+  </tr>
 </p>
 <p>
-  <%= label_tag'załączono zdjęcia'%>
-  <%= check_box_tag'photo_added'%>
-
-  <%= label_tag'odbiór osobisty'%>
-  <%= check_box_tag'own_deliv'%>
-  <%= label_tag 'ids'%>
-
+<tr>
+  <td><%= label_tag'załączono zdjęcia'%></td>
+  <td><%= check_box_tag'photo_added'%></td>
+</tr>
+<tr>
+<td><%= label_tag'odbiór osobisty'%></td>
+<td><%= check_box_tag'own_deliv'%></td>
+</tr>
   <%=text_field_tag "categoriesids",'', :id=>"categories_ids"%>
 </p>
+</table>
+<br/>
+<label id="show_categories_chooser">Szukaj w kategoriach</label>
 
-<div id='search_category' style="border:1px solid #fff; width:400px; height:150px;">
-  <%=Category.find_each do |x| %>
-    <div class='unclicked' id=category<%=x.id%> style="width:70px; heigth:30px;background-color:#12345;border:1px solid #fff;float:left;">
-      <%=x.name%>
+<div id='search_category' style="margin-top:10px;background-color:#9B9B9A;">
+  <%Category.findCategory.each_with_index do |category_label, index|%>
+  <div style="width:90px; float:left;">  <label class="category_labels"><%=category_label.name%></label>
+    
+      <%category_label.children.each do |subc|%>
+       <div id=<%=subc.id%>><%=subc.name%></div>
+    <%end%>
     </div>
   <%end%>
+  
 </div>
-
-<%=submit_tag'szukaj'%>
 
 <%end%>
 
-<%=content_tag(:button, 'wyczyść', :id=>'clear_search_button')%>
-
 <% for post in @posts%>
-  <div><%=post.content%></div>
+  <%= render :partial=>'shared/posts', :locals=>{:j=>post}%>
 <%end%>  
+
+<% if @posts.nil?%>
+  <%= render :partial=>'shared/none_result'%>
+<%end%>
   <%=will_paginate @posts%>
-<div id="right_menu" style="width:40px; height:150px; background-color:#2c7471;
--webkit-border-radius:10px 10px 10px 10px;position:fixed;right:0px; bottom:200px;">
-  <div id="scroll_up" style="width:90%;height:40px;text-align:center;cursor:default;font-weight:bold;padding-top:3px;-webkit-border-radius:10px 10px
-10px 10px;">
+<div id="right_menu">
+  <div id="scroll_up">
     Up
   </div>
-  <div id="scroll_down" style="width:90%;height:40px;text-align:center;cursor:default;font-weight:bold;padding-top:3px;-webkit-border-radius:10px 10px
-10px 10px;">
+  <div id="scroll_down">
     Down
   </div>
   

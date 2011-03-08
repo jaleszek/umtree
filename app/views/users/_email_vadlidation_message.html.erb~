@@ -1,0 +1,20 @@
+
+<%if @taken_flag=='taken'%>
+  <script>
+
+$j(document).ready(      
+			  function(){
+  $j('#email_field').css('background-color', '#E23737');
+  $j('#email_field').attr('alt', 'taken');
+});
+
+  </script>
+<%else%>
+ <script>
+$j(document).ready(      
+			  function(){
+    $j('#email_field').css("background-color", "#3DE52E");
+    $j('#email_field').attr('alt', 'free');
+});
+  </script>
+<%end%>

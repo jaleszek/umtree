@@ -3,7 +3,8 @@
 $j(document).ready(      
 			  function(){
     $j('#username').css("background-color", "#DD4F4F");
-    $j('#username_state').text('podany adres znajduje się w bazie');
+    $j('#username_state').html('<div class="content_description" style="margin-top:5px;">Podany adres znajduje się w bazie. Jeśli chcesz dodawać kolejne ogłoszenia, '+
+    '<a href="/users/new"> zarejestruj<a></div>');
 });
   </script>
 <%else%>

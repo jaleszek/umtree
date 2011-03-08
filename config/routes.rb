@@ -10,6 +10,7 @@ Sprzedaj::Application.routes.draw do
   get "sessions/new"
   get "posts/validate"
   get "uploads/show"
+  get "users/validate_email"
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]

@@ -1,0 +1,23 @@
+
+<%if @taken_flag=='taken'%>
+  <script>
+
+$j(document).ready(      
+			  function(){
+
+  $j('#email_field').css('background-color', '#EDA7A7');
+  $j('#email_field').attr('alt', 'taken');
+  $j('.validateTips').text('Podany adres email znajduje się już w bazie, wpisz inny.');
+});
+
+  </script>
+<%else%>
+ <script>
+$j(document).ready(      
+			  function(){
+    $j('#email_field').css("background-color", "#3DE52E");
+    $j('#email_field').attr('alt', 'free');
+    $j('.validateTips').text('Uzupełnij wszystkie pola');
+});
+  </script>
+<%end%>

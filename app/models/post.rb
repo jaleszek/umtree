@@ -24,6 +24,8 @@ class Post < ActiveRecord::Base
   belongs_to :category
   has_one :location, :dependent=> :destroy
   has_many :upload_previews
+  has_many :followers, :through => :reverse_relationships, :source => :follower
+  has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship"
 
   validates :content, :presence =>true, :length =>{:within=>20..400}
   validates :title, :presence=>true, :length=>{:within=>10..40}

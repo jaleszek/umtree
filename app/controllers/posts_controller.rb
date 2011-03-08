@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # username taken validation, ajax
   def validate
     username=params[:username]
-    user=User.find_by_email(username)
+    user=Post.find_by_username(username)
 
     if user.nil?
       message='free'
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @preview =UploadPreview.new(:post_ident=>@post.getIdent)
     @post.build_location
     @categories=Category.all
-    @categories_label = Category.find_by_sql("select*from Categories where parent_id=22")
+    @categories_label = Category.findCategory
 
     respond_to do |format|
       format.html # new.html.erb

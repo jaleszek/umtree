@@ -14,6 +14,7 @@ gem 'paperclip',  :git=>'git://github.com/thoughtbot/paperclip.git'
 group :test do
   gem 'rspec-rails', '2.5.0'
   gem 'spork', '0.9.0.rc3'
+  gem 'factory_girl_rails', '1.0'
 end
 
 gem 'hirb'
@@ -27,7 +28,7 @@ gem 'gravatar_image_tag'
 gem 'heroku'
 #doesn't work with rails3
 #gem 'rd_searchlogic', :require => 'searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
-gem "meta_search", :git => "git://github.com/ernie/meta_search.git"
+gem "meta_search"
 gem "meta_where"
 
 # Use unicorn as the web server

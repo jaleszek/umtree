@@ -12,4 +12,7 @@ module ApplicationHelper
     end
   end
   
+  def newUser
+    @user=User.new  
+  end
 end

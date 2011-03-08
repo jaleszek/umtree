@@ -3,5 +3,10 @@
       	<h1><a href="http://www.templatemo.com" target="_parent">
                 sprzedaj-stara.pl
             </a></h1>
+            <% if !signed_in?%>
+              <label id="create_user" style="float:right; margin-right:20px;cursor:default;">szybka rejestracja</label> 
+              <%= render :partial=>'layouts/fast_registering_form'%>    
+            <%end%>
+            
       </div>
-</div> 
+</div>

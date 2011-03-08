@@ -14,6 +14,7 @@ gem 'paperclip',  :git=>'git://github.com/thoughtbot/paperclip.git'
 group :test do
   gem 'rspec-rails', '2.5.0'
   gem 'spork', '0.9.0.rc3'
+  gem 'factory_girl_rails', '1.0'
 end
 
 gem 'hirb'
@@ -29,6 +30,7 @@ gem 'heroku'
 #gem 'rd_searchlogic', :require => 'searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
 gem "meta_search"
 gem "meta_where"
+gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'

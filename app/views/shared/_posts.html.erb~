@@ -2,7 +2,7 @@
 
 <div style="float:right;width:70%;height:90%;overflow:hidden;">
   <p>
-    <b><%= link_to j.title, posts_path(j.id)%></b>
+    <b><%= link_to j.title, j%></b>
   </p>
   <p class="content">
     <%= j.content %>

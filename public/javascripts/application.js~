@@ -45,10 +45,7 @@ if(file.result !='error'){
 
                    });
 //----------------------------------scroll up-------------------------------------
-                $j('#scroll_up').click(function(){
-                  alert('a');
-
-                }); 
+              
 //--------------------------------------------------------------------------------
                 $j('#disable_formatting').click(function(){
                   $j(this).css("display","none");
@@ -194,4 +191,6 @@ function enableFormatting(){
         $j(this).attr("disabled", "");
 });
 }
+//-------------------------------------turn off browser autocomplete------------------------------
+     $j('#user_registering_form').attr('autocomplete', 'off');
 			

@@ -4,7 +4,7 @@
 <% Category.findCategory.each do |label| %>
   <div> <tr><td colspan="2">
     <span class="root_node_category">
-      <%= image_tag 'plus_icon', :options=>{:style=>"position:relative; top:3px;"}%>
+      <%= image_tag 'plus_icon.jpg', :options=>{:style=>"position:relative; top:3px;"}%>
 
 	 <%= label.name %>
     </span> </td><td></td></tr></div>

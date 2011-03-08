@@ -21,14 +21,18 @@
   </div>	
   <%=j.text_area( :content, :cols => 45, :rows => 15, :id => "content_text_area")%>
   <div id="message"></div>
+
   <% if !signed_in? %>
+    <%=j.label 'Nazwa użytkownika (adres email)'%>
     <%=j.text_field :username,:id => 'username' %>
+
     <label id="username_state"></label>
+
     <%=hidden_field_tag :ident, @post.getIdent %>
     <%=observe_field :username, :with=>"username", :frequency=>0.25, :url=>{:action=>:validate, :controller=>:posts},
       :update=>"message", :method=>:get%>
   <%else%>
-    <%= j.hidden_field :username, :id=>'username', :value=>current_user.email %>
+    <%= j.text_field :username, :id=>'username', :value=>current_user.email, :readonly=>'readonly' %>
   <% end %>
 
 

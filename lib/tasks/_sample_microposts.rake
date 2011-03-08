@@ -1,18 +1,76 @@
+# coding: utf-8
 require 'faker'
 
 namespace :db do
-  desc "Fill microposts table with sample data"
-  task :make_micropost=>:environment do
-    Category.all.each do |category|
-      50.times do
-        category.posts.create!(
-	  :content => Faker::Lorem.sentence(5),
-	  :title => ('a'..'z').to_a.shuffle[0..11].join,
-         :city => Faker::Lorem.words(1).to_s.capitalize,
-         :street => Faker::Lorem.words(1),
-         :user_id=>3          
-		) if category.parent_id!=22 && !category.parent_id.nil?
-      end
+  desc "Fill posts table with sample data"
+  task :init_application=>:environment do 
+    
+    Rake::Task['db:reset'].invoke
+    make_users 
+    make_categories
+    make_posts
+    make_relationships
+   
+ end
+end
+
+def make_posts
+  Category.all.each do |category|
+    20.times do
+      post=category.posts.create!(
+	    :content => Faker::Lorem.sentence(20),
+	    :title => ('a'..'z').to_a.shuffle[0..11].join,
+      :user_id=>(Random.new.rand(1..15)).to_i,
+      :username => Faker::Internet.email,    
+		  ) if category.parent_id!=1 && !category.parent_id.nil?
+      
+      post.build_location(:city=>Faker::Address.city, 
+        :state=>Faker::Address.us_state, 
+        :zip=>Faker::Address.zip_code, 
+        :street=>Faker::Address.street_address,
+        :price=>Random.new.rand(2..400)) if !post.nil?
     end
   end
+end
+
+def make_users
+  admin=User.create!(:name=>"Leszek",
+                    :email=>"andrukanisleszek@gmail.com",
+                    :password=>"admin",
+                    :password_confirmation=>"admin")
+  admin.toggle!(:admin)
+  15.times do |n|
+    name=Faker::Name.name
+    email=Faker::Internet.email
+    password = "password"
+    User.create!(:name=>name, :email=>email, :password=>password, :password_confirmation=>password)
+  end
+end
+
+def make_relationships
+  user=User.first
+  posts=Post.all
+  post=posts.first
+  posts.each{|followed| user.follow!(followed)}
+end
+
+def make_categories
+  
+  categories=["Nieruchomości", "Sprzedam", "Praca", "Społeczność", "Usługi", "Motoryzacja"]
+  subcategories=[]
+  subcategories[0]=["pokój wynajmę","pokój poszukuję", "nieruchomośći na krótki termin", "dom/mieszkanie wynajmę", "dom/mieszkanie poszukuję", "parking/garaż", "działkę sprzedam", "działkę kupie", "lokal/biuro"]
+  subcategories[1]=["bilety", "agd/wyposażenie domu", "antyki/biżuteria","odzież/obuwie", "komputery/akcesoria", "rtv/tv", "gry video/konsole", "cd/dvd filmy", "sprzedam inne"]
+  subcategories[2]=["bar/restauracja", "biuro/administracja", "praca na budowie", "finanse/księgowość", "inżynierowie/technicy", "kierowcy/kurierzy", "edukacja/opiekunki", "pielęgnacja/uroda", "programiści/informatyka", "praca fizyczna"]
+  subcategories[3]=["drobne pytania", "hobby", "korepetycje/nauka", "sport/taniec", "partnerzy do gry", "podróże", "zgubiono/znaleziono", "starzy przyjaciele"]
+  subcategories[4]=["biura podróży", "sport/fitness", "fotografia/filmowanie", "motoryzacja", "hurt/detal", "pielęgnacja/uroda", "opiekunki/nianie", "przeprowadzki/transport", "kursy/szkolenia", "śluby/wesela", "taxi/transport", "muzycy/artyści", "sprzątanie mieszkań"]
+  subcategories[5]=["samochody osobowe", "samochody dostawcze", "skutery/motocykle", "ciągniki rolnicze", "przyczepy/naczepy", "akcesoria"]
+
+  Category.create!()
+  categories.each_with_index do |category, index| 
+    cat=Category.create!(:parent_id=>:root, :name=> category)
+    
+    subcategories[index].each do |subcategory|
+      Category.create!(:parent_id=>cat.id, :name=>subcategory)
+    end
+  end 
 end

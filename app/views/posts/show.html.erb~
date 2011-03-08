@@ -1,5 +1,9 @@
+<%@user ||= current_user%>
 <div id="post_content">
   <p id="post_title">
     <%=@post.title%>
+
+    <%=@post.followers.count%> following
+    <%=link_to "a", @post.followers.first%>
   </p>
 </div>

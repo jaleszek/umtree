@@ -1,7 +1,6 @@
+# coding: utf-8
 module SessionsHelper
-  def store_location
-  
-  end
+ 
   def signed_in?
     !current_user.nil?
   end
@@ -21,13 +20,28 @@ module SessionsHelper
     self.current_user=nil
   end
   def deny_access
-    redirect_to root_path, :notice => "Please sign in"
+    store_location
+    redirect_to root_path, :notice => "Strona dostępna po zalogowaniu"
   end
   def current_user?(user)
     user == current_user
   end
+  
+  def redirect_back_or(default)
+    redirect_to(session[:return_to]||default)
+    clear_return_to  
+  end
+
+  def store_location
+      session[:return_to] = request.fullpath
+  end 
 
   private 
+    def clear_return_to
+      session[:return_to] = nil  
+    end
+    
+     
 
     def user_from_remember_token
       User.authenticate_with_salt(*remember_token)

@@ -1,5 +1,8 @@
 <div id="login_panel">
-
+<%store_location%>
+<% flash.each do |key, value|%>
+  <%=key%><%=value%>
+<%end%>
   <%=image_tag 'close.png', :id=>'close_button'%>
 	<span>Aby móc korzystać z tej funkcji musisz być zalogowany <%= link_to "zarejestruj", signup_path %></span>
 		<div>

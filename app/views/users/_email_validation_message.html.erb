@@ -1,0 +1,42 @@
+<%if @error_out[:taken] && @error_out[:size] && @error_out[:format]%>
+  <script>
+// email already exists in database
+$j(document).ready(      
+			  function(){
+
+  $j('#email_field').css('background-color', '#EDA7A7');
+  $j('#email_field').attr('alt', 'taken');
+  $j('.validateTips').text('Podany adres email znajduje się już w bazie, wpisz inny.');
+});
+
+  </script>
+<%end%>
+
+<%if !@error_out[:taken] && @error_out[:size] && @error_out[:format]%>
+ <script>
+//all correct
+$j(document).ready(      
+			  function(){
+    $j('#email_field').css("background-color", "#3DE52E");
+    $j('#email_field').attr('alt', 'free');
+    $j('.validateTips').text('Uzupełnij wszystkie pola');
+});
+  </script>
+<%end%>
+
+<%if !@error_out[:size]%>
+  <script>
+    $j('.validateTips').text('Minimum 5 znaków.');
+    $j('#email_field').attr('alt', 'taken');
+    $j('#email_field').css('background-color', "#fff");
+  </script>
+<%end%>
+
+<%if @error_out[:size] && !@error_out[:format]%>
+  <script>
+    $j('.validateTips').text('Błędny adres');
+    $j('#email_field').attr('alt', 'taken');
+    $j('#email_field').css('background-color', "#fff");
+  </script>
+<%end%>
+
