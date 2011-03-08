@@ -50,8 +50,8 @@
 		
 		$j( "#dialog-form" ).dialog({
 			autoOpen: false,
-			height: 350,
-			width: 350,
+			height: 450,
+			width: 390,
 			modal: true,
 			buttons: {
         
@@ -155,21 +155,26 @@ input:-webkit-autofill {
 <div id='update_email_field'></div>
   <div class="field">
 
-    <%=observe_field :email_field, :with=>"email", :frequency=>0.25, :url=>{:action=>:validate_email, :controller=>:users}, :method=>:get, :update=>'update_email_field'%>
+    <%=observe_field :email_field, :with=>"email", :frequency=>0.25, :url=>{:action=>:validate_registration, :controller=>:users}, :method=>:get, :update=>'update_email_field'%>
 
     <%= f.label :name, 'Imię i nazwisko' %>
     <%= f.text_field :name, :size=>25, :id=>'surname_field', :title=>'Minimalna ilość znaków 5, maksymalna 50, bez znaków specjalnych i cyfr.'%>
     <%= f.label :email, 'Email' %>
-    <%= f.text_field :email, :id=>'email_field', :size=>25, :alt=>'' %>
+    <%= f.text_field :email, :id=>'email_field', :size=>25, :alt=>'' , :title=>'Minimalna ilość znaków 5, maksymalna 50, adres email w formacie np. nazwa_konta@domena.com'%>
     <%= f.label :password , 'Hasło'%>
     <%= f.password_field :password, :id=>'password_field', :size=>25%>
     <%= f.label 'confirm password', 'Potwierdź hasło'%>
     <%= f.password_field :password_confirmation, :id=>'password_confirmation_field', :size=>25 %>
   </div>
+  
   <div class="actions">
     <%=f.submit '', :style=>'width:1px; height:1px; background-color:#fff; border:#fff;', :class=>'submit_reg' %>
   </div>
-
+ <div id="captcha_container">
+  <label style="float:left;font-family: Andale Mono, monospace;">Wpisz kod uwierzytelniający. Upewnij się, że jest poprawny, w przeciwnym razie proces rejestracji zostanie anulowany.</label>
+    <%=show_simple_captcha%> 
+  </div>
 <% end %>
+ 
 </div>
 
