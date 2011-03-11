@@ -1,9 +1,27 @@
 <%@user ||= current_user%>
-<div id="post_content">
+<div id="post_content" style="padding:5px;">
+
+<% if signed_in? %>
+  <div id="user_functionality_container" >
+    <label id="add_favourites" style="margin-left:5px;"><a>Ulubione</a></label>
+    <label id="list_favourites"><a>Obserwuj</a></label>
+  </div>
+<%end%>
+
+<div id="post_title_container">
   <p id="post_title">
     <%=@post.title%>
-
-    <%=@post.followers.count%> following
-    <%=link_to "a", @post.followers.first%>
-  </p>
+</div>
+<div id="answer_content"></div>
+<div id="post_content_text"><%=@post.content%></div>
+<div id="image_container">
+  <%@post.upload_previews.each do |preview|%>
+    <div class="image_wrapper">
+      <%= image_tag preview.img.url, :width=>90%>
+    </div>
+  <%end%>
+</div>
+<div id="date_container">
+  <%=@post.created_at%>  
+</div>
 </div>

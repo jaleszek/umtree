@@ -3,7 +3,7 @@
 <%= stylesheet_link_tag 'jquery.fileupload-ui' %>
 <%= stylesheet_link_tag 'jquery.lightbox-0.5' %>
 <%= stylesheet_link_tag 'jquery-ui' %>
-<%= stylesheet_link_tag 'ui.dialog' %>
+
 <%= javascript_include_tag 'jquery.js' %>
 <%= javascript_include_tag 'application'%>
 <%= javascript_include_tag 'prototype.js' %>
@@ -16,6 +16,6 @@
 <%= javascript_include_tag 'jquery.lightbox-0.5.min.js' %>
 <%= javascript_include_tag 'jquery.lightbox-0.5.pack.js' %>
 <%= javascript_include_tag 'jquery.scrollTo.js' %>
-
+<%= javascript_include_tag 'multiselectable' %>
 
 

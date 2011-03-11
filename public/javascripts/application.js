@@ -25,7 +25,7 @@ var $j = jQuery.noConflict();
     },
 buildDownloadRow: function(file){
 if(file.result !='error'){
-   return $j('<tr alt="'+file.id+'"><td ><a class="photo_lightbox"><img  alt="picture" width="100" src="' + file.img_path + '"><\/a>' + file.name + '<\/td><td><script>'+
+   return $j('<tr alt="'+file.id+'"><td ><a class="photo_lightbox"><img  alt="picture" style="width:80px; border:1px solid #fff; " src="' + file.img_path + '"><\/a><\/td><td><script>'+
                  ' $j(".delete_photo_link").click(function(){'+
                    ' var id = $j(this).attr("id");'+
                    ' $j.ajax({'+
@@ -34,7 +34,8 @@ if(file.result !='error'){
                      'success: function(){$j("tr[alt='+file.id+']").hide();}'+
                     '});});'
 
-+'<\/script><label style="background-color:red;" class="delete_photo_link" id="'+file.id+'">usun<\/label><\/td><\/tr>');
++'<\/script><img src="/images/cancel.png" width=25 style="margin-left:20px;"' +
+  '" class="delete_photo_link" id="'+file.id+'"><\/label><\/td><\/tr>');
 } else{
   return $j('<script>alert("za duza ilosc zalaczników");<\/script>');}
   }
@@ -42,7 +43,6 @@ if(file.result !='error'){
 //----------------------------------upload----------------------------------------
                 $j('#click').click(function(){
                   $j('#upload_preview_img').click();
-
                    });
 //----------------------------------scroll up-------------------------------------
               
@@ -162,7 +162,7 @@ if(file.result !='error'){
               var posOfTarget = obj.position();
               var message_ = $j('#content_settings_list');
 			  var topPosition = parseInt(posOfTarget.top + parseInt(split(obj.css("height"), 2)) );
-		      var leftPosition = parseInt(posOfTarget.left)-30;
+		      var leftPosition = parseInt(posOfTarget.left)-22;
 			  message_.css({"top" : topPosition, "left" : leftPosition});
              }
 //-------------------------------------Google maps------------------------------------------------

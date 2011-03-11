@@ -3,9 +3,9 @@
 <div style="float:right;width:70%;height:90%;overflow:hidden;">
   <p>
     <b><%= link_to j.title, j%></b>
-  </p>
+  </p><label><%= j.created_at %></label>
   <p class="content">
-    <%= j.content %>
+    <%= j.content.to_s[0..80]+' (...)' %>
   </p>
   <p>
     <%= time_ago_in_words(j.created_at)%>

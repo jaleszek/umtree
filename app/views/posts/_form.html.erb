@@ -12,19 +12,14 @@
     <%=render :partial => 'content_fields', :locals=>{ :j => f}%>
   </div> 
  
-  <div id="second_post_tab">   
-    <table id="upload_files"></table>
-    <table id="download_files"></table>
-  <div id="show_pic"></div>
-    <div id="click" style="background-color:red;">klik</div>
+  <div id="second_post_tab">
+    <%= render :partial=>'upload_fields'%>
 	</div>
 
   <div id="third_post_tab">
-    <div class="content_description">
-      Wybierz kategorię najlepiej opisującą ogłoszenie, które masz zamiar opublikować
-    </div>
     <%= render :partial=>'category_fields' %>
   </div>
+
 <%#wyrzucic do helpera%>
 
   <div id="fourth_post_tab"> 

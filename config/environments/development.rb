@@ -23,6 +23,6 @@ Sprzedaj::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   Paperclip.options[:command_path]="/usr/bin"
-  config.logger = Logger.new(config.paths.log.first, 1, 5242880)
+  config.logger = Logger.new(config.paths.log.first, 1, 8242880)
 end
 

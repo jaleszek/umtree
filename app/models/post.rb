@@ -31,7 +31,8 @@ class Post < ActiveRecord::Base
   validates :title, :presence=>true, :length=>{:within=>10..40}
   validates :category_id, :presence=>true
   validates :username, :presence=>true, :format=>{:with=>username_regex}
-  
+  validates_acceptance_of :terms, :message=> "Zaakceptuj warunki"
+
   after_save :saveUpload
   before_save :defaultValues
   after_initialize :ident
@@ -54,11 +55,6 @@ class Post < ActiveRecord::Base
   def ident
     @ident=((1..20).to_a).shuffle[1..10].join 
   end
-  
-  #method to provide accepting terms validation 
-  def acceptTerms=(bool)
-    #not implemented yet
-  end 
   
   #method updates foreign key in the table upload_previews, after related post is saved 
   def saveUpload

@@ -1,3 +1,7 @@
+<div class="content_description">
+    Dodaj treść ogłoszenia. Ogłoszenie powinno zawierać wszystkie niezbędne informacje. 
+</div>
+
 <table>
   <tr>
     <td>
@@ -32,6 +36,7 @@
     <%=observe_field :username, :with=>"username", :frequency=>0.25, :url=>{:action=>:validate, :controller=>:posts},
       :update=>"message", :method=>:get%>
   <%else%>
+    <%=j.label 'Nazwa użytkownika (adres email)'%>
     <%= j.text_field :username, :id=>'username', :value=>current_user.email, :readonly=>'readonly' %>
   <% end %>
 

@@ -5,10 +5,10 @@
     <b><%= link_to j.title, j%></b>
   </p>
   <p class="content">
-    <%= j.content %>
+    <%= j.content.to_s[0..80]+' (...)' %>
   </p>
   <p>
-    <%= j.created_at%>
+    <%= time_ago_in_words(j.created_at)%>
   </p>
 </div>
 <div style="padding:10px;width:30%;">

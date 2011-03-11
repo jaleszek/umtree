@@ -1,18 +1,36 @@
+# coding: utf-8
 class PostsController < ApplicationController
 
   # username taken validation, ajax
   def validate
-    username=params[:username]
-    user=Post.find_by_username(username)
+    @error_out={}
+    email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
+    email=params[:username]
+    
+    user=User.find_by_email(email)
     if user.nil?
-      message='free'
+      @error_out[:taken]=false
     else
-      message='taken'
+      @error_out[:taken]=true
+    end    
+    if !email.nil?
+      if email.size()>6
+        @error_out[:size]=true
+      else
+        @error_out[:size]=false
+      end
+    else
+      @error_out[:size]=true
     end
+    if email =~ email_regex
+      @error_out[:format]=true
+    else
+      @error_out[:format]=false
+    end
+    
+    render :partial=>'validation_message'
 
-    @message=message
-    render :partial=>'message'
   end
 
   def new
@@ -41,7 +59,7 @@ class PostsController < ApplicationController
     @post.ident=ident_    
     @post.category_id=params[:category][:id]
     logger.debug("controllercreate #{ident_}")
-    @post.accept_terms=params[:terms][:accept]
+    @post.terms=params[:terms][:accept]
     #logger.debug "Post attribute#{@post.uploads}"
     
     respond_to do |format|
@@ -111,6 +129,10 @@ class PostsController < ApplicationController
       params_out[:price_lte]=price_right.to_i
     end
 
+    #photo attachment
+    if photo_added
+      params_out[:upload_previews_img_file_name_is_not_null]=>'1'
+    end
     #category id
     params_out[:category_id_in]=categories_ids_array
 

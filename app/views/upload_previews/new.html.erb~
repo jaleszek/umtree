@@ -1,0 +1,8 @@
+<h1>New upload_preview</h1>
+<div class='content_description'>
+    Dodaj zdjęcia które mają być umieszczone w ogłoszeniu. Zdjęcie powinno być zapisane w formacie .jpg i zajmować nie więcej niż 2MB. 
+    Zdjęcia powinny być dobrej jakości i dotyczyć jedynie treści zamieszczonego ogłoszenia.
+  </div>
+<%= render 'form' %>
+
+<%= link_to 'Back', upload_previews_path %>

@@ -1,18 +1,37 @@
-<%if @message=='taken'%>
+<%if @error_out[:taken] && @error_out[:size] && @error_out[:format]%>
   <script>
+// email already exists in database
 $j(document).ready(      
 			  function(){
-    $j('#username').css("background-color", "#DD4F4F");
-    $j('#username_state').html('<div class="content_description" style="margin-top:5px;">Podany adres znajduje się w bazie. Jeśli chcesz dodawać kolejne ogłoszenia, '+
-    '<a href="/users/new"> zarejestruj<a></div>');
+  $j('#username').css("background-color", "#DD4F4F");
+  $j('#username_state').html('<div class="content_description" style="margin-top:5px;">Na podany adres zarejestrowano już konto. Zaloguj się');
 });
+
   </script>
-<%else%>
+<%end%>
+
+<%if !@error_out[:taken] && @error_out[:size] && @error_out[:format]%>
  <script>
+//all correct
 $j(document).ready(      
 			  function(){
-    $j('#username').css("background-color", "#A3EF74");
+     $j('#username').css("background-color", "#A3EF74");
      $j('#username_state').text('');
 });
   </script>
 <%end%>
+
+<%if !@error_out[:size]%>
+  <script>
+  $j('#username').css("background-color", "#fff");
+  $j('#username_state').text('Minimum 6 znaków');
+  </script>
+<%end%>
+
+<%if @error_out[:size] && !@error_out[:format]%>
+  <script>
+   $j('#username').css("background-color", "#DD4F4F");
+  $j('#username_state').text('Błędny adres');
+  </script>
+<%end%>
+

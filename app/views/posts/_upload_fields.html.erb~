@@ -1,0 +1,10 @@
+
+<div class='content_description' style='margin-bottom:5px;'>
+  Dodaj zdjęcia które mają być umieszczone w ogłoszeniu. Zdjęcie powinno być zapisane w formacie .jpg i zajmować nie więcej niż 2MB. 
+  Zdjęcia powinny być dobrej jakości i dotyczyć jedynie treści zamieszczonego ogłoszenia.
+</div> 
+<div id="click">Dodaj zdjęcie</div>  
+<table id="upload_files"></table>
+<table id="download_files"></table>
+<div id="show_pic"></div>
+
