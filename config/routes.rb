@@ -1,5 +1,7 @@
 Sprzedaj::Application.routes.draw do
 
+  resources :supports
+
   get "pages/contact"
   get "pages/help"
 
@@ -15,6 +17,7 @@ Sprzedaj::Application.routes.draw do
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
   resources :posts
+  resources :supports, :only => [:new, :create]
 
   match '/signup', :to => 'users#new'
   match '/signout', :to => 'sessions#destroy'

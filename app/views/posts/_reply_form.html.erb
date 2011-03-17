@@ -1,0 +1,42 @@
+<script>
+//----------------------------------hide/show reply form--------------------------
+$j(document).ready(function(){
+$j('.click2').click(function(){
+  $j('#reply_form_container').animate({height:'toggle'});
+  $j('#post_content_text').css('height', '120px');
+  $j('.click2').hide();
+  $j('#image_container').hide();
+});});
+//--------------------------------------------------------------------------------
+</script>
+
+<div id="reply_form_container">
+  <p>
+    <%= s.label "Imię" %>
+  </p>
+  <p>
+    <%= s.text_field :sender_name %>
+  </p>
+  <p>
+    <%= s.label "Adres zwrotny" %>
+  </p>
+  <p>
+    <%= s.text_field :email %>
+  </p>
+
+  <p>
+    <%= s.label "Treść" %>
+  </p>
+  <p>
+    <%= s.text_field :content %>
+  </p>
+
+  <p>
+    <%= s.text_field :receiver, :default=>p.username, :value=>p.username, :class=>'username_reply_sender'%>
+  </p>
+  <p>
+    <%= s.submit "Wyślij", :class=>'send_reply' %>
+  </p>
+</div>  
+
+

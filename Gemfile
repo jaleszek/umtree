@@ -30,7 +30,10 @@ gem 'heroku'
 #gem 'rd_searchlogic', :require => 'searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
 gem "meta_search"
 gem "meta_where"
+
 gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
+gem "mail", "2.2.11"
+gem 'action_mailer_tls'
 
 # Use unicorn as the web server
 # gem 'unicorn'

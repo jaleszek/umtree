@@ -31,6 +31,8 @@ gem 'heroku'
 gem "meta_search"
 gem "meta_where"
 
+gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
+gem "mail", "2.2.11"
 
 # Use unicorn as the web server
 # gem 'unicorn'

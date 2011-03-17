@@ -1,6 +1,6 @@
 # coding: utf-8
-class PostsController < ApplicationController
 
+class PostsController < ApplicationController
   # username taken validation, ajax
   def validate
     @error_out={}
@@ -74,12 +74,13 @@ class PostsController < ApplicationController
   end
 
   def show
+    @support = Support.new(:id=>1)
     @post = Post.find(params[:id])
     respond_to do |format|
       format.html  
     end
   end
-
+ 
   def index
 
     #fields
@@ -131,7 +132,7 @@ class PostsController < ApplicationController
 
     #photo attachment
     if photo_added
-      params_out[:upload_previews_img_file_name_is_not_null]=>'1'
+      params_out[:upload_previews_img_file_name_is_not_null]='1'
     end
     #category id
     params_out[:category_id_in]=categories_ids_array

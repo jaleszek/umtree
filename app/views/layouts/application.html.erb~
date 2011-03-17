@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <%= render :partial=>'layouts/fast_registering_form'%>
+<%= render :partial=>'shared/error_messages'%>
   <% if !signed_in? %>
 	  <%= render 'layouts/login_panel' %>
   <%end%>

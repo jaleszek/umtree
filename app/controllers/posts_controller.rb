@@ -1,6 +1,6 @@
 # coding: utf-8
-class PostsController < ApplicationController
 
+class PostsController < ApplicationController
   # username taken validation, ajax
   def validate
     @error_out={}
@@ -74,12 +74,14 @@ class PostsController < ApplicationController
   end
 
   def show
+    @support = Support.new(:id=>1)
     @post = Post.find(params[:id])
+    store_location
     respond_to do |format|
       format.html  
     end
   end
-
+ 
   def index
 
     #fields

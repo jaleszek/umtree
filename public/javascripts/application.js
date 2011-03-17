@@ -41,12 +41,14 @@ if(file.result !='error'){
   }
     });
 //----------------------------------upload----------------------------------------
-                $j('#click').click(function(){
+                $j('.click').click(function(){
                   $j('#upload_preview_img').click();
                    });
 //----------------------------------scroll up-------------------------------------
               
 //--------------------------------------------------------------------------------
+
+
                 $j('#disable_formatting').click(function(){
                   $j(this).css("display","none");
                   $j('#enable_formatting').css("display", "block");

@@ -1,0 +1,13 @@
+ActionMailer::Base.smtp_settings = {
+  :enable_starttls_auto => true,
+  :address => "smtp.gmail.com",
+  :port => 587,
+  :authentication => 'plain', 
+  :user_name => "umtreee@gmail.com",
+  :password => "panleszek1",
+  #:tls => true
+}
+ActionMailer::Base.default_url_options[:host] = "localhost:3000"
+Mail.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?
+
+

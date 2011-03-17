@@ -34,18 +34,25 @@ if(file.result !='error'){
                      'success: function(){$j("tr[alt='+file.id+']").hide();}'+
                     '});});'
 
-+'<\/script><img src="/images/cancel.png" width=25'+
++'<\/script><img src="/images/cancel.png" width=25 style="margin-left:20px;"' +
   '" class="delete_photo_link" id="'+file.id+'"><\/label><\/td><\/tr>');
 } else{
   return $j('<script>alert("za duza ilosc zalaczników");<\/script>');}
   }
     });
 //----------------------------------upload----------------------------------------
-                $j('#click').click(function(){
+                $j('.click').click(function(){
                   $j('#upload_preview_img').click();
                    });
 //----------------------------------scroll up-------------------------------------
               
+//--------------------------------------------------------------------------------
+
+//----------------------------------hide/show reply form--------------------------
+$j('.click2').click(function(){
+alert("asdasdasd");
+  $j('#reply_form_container').animate({height:'toggle'});
+});
 //--------------------------------------------------------------------------------
                 $j('#disable_formatting').click(function(){
                   $j(this).css("display","none");

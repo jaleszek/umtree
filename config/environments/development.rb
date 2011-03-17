@@ -15,7 +15,10 @@ Sprzedaj::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors=false
+  config.action_mailer.delivery_method = :smtp
+
+ 
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -23,6 +26,6 @@ Sprzedaj::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   Paperclip.options[:command_path]="/usr/bin"
-  config.logger = Logger.new(config.paths.log.first, 1, 8242880)
+  config.logger = Logger.new(config.paths.log.first, 1, 4000000)
 end
 

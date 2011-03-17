@@ -1,19 +1,25 @@
 <%@user ||= current_user%>
 <div id="post_content" style="padding:5px;">
-
 <% if signed_in? %>
   <div id="user_functionality_container" >
     <label id="add_favourites" style="margin-left:5px;"><a>Ulubione</a></label>
     <label id="list_favourites"><a>Obserwuj</a></label>
   </div>
 <%end%>
+<% form_for @support, :url => { :action => "create", :controller=>"supports" }, :html => { :method => :post }, :class=>'reply_form' do |f| %>
+<%= render :partial=>'shared/error_messages', :locals=>{:object=>@support}%>
+  <%= render :partial=>'reply_form', :locals=>{:p=>@post, :s=>f}%>
+<% end %>
 
 <div id="post_title_container">
   <p id="post_title">
     <%=@post.title%>
 </div>
 <div id="answer_content"></div>
-<div id="post_content_text"><%=@post.content%></div>
+<div id="post_content_text">
+  <%=@post.content%>
+<div class="click2">Odpowiedz</div>
+</div>
 <div id="image_container">
   <%@post.upload_previews.each do |preview|%>
     <div class="image_wrapper">
@@ -21,4 +27,9 @@
     </div>
   <%end%>
 </div>
+<div id="date_container">
+  <%=@post.created_at%>  
+  </div>
+
 </div>
+
