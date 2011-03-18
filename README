@@ -1,1 +1,37 @@
-WItaj w aplikacji Sprzedaj starą
+WItaj w aplikacji Sprzedaj starą.
+
+Aplikacja powstała i jest rozwijana w celach dydaktycznych, służy nauce framework'a Ruby on Rails.
+Zagadnienia poruszone w aplikacji dotyczą również kodowania front-endowego, co zaowocowało sporą ilością
+kodu javascript i arkuszy stylu. 
+
+W tworzeniu aplikacji inspirowano się stroną gumtree.pl, część rozwiązań jest zaczerpnięta bezpośrednio z tego 
+serwisu. 
+
+Analiza wymagań użytkownika 
+
+  Funkcjonalności produktu (must have)
+- System rejestracji i uwierzytelnienia wraz z walidacją poprawności wprowadzonych danych i możliwości modyfikowania hasła *
+- Umożliwienie dodawania ogłoszeń wraz z walidacją poprawności *
+  - dodanie lokacji danego ogłoszenia przez wskazanie jej na mapce * 
+  - dodanie materiału fotograficznego opisującego ogłoszenie *
+  - dodanie kategorii najlepiej opisującej tematykę ogłoszenia *
+  - dodanie ewentualnej ceny do ogłoszenia *
+  - tagi opisujące ogłoszenie
+  - walidacja akceptacji regulaminu *
+  - możliwość wyróżnienia ogłoszenia korzystając z opcji 'Promo'
+  - ręczne dodawanie lokalizacji i sprawdzanie jej na mapie *
+  - powiadomienie e-mail po dodaniu ogłoszenia 
+- Umożliwienie przeglądania ogłoszeń bez sortowania *
+- Umożliwienie grupowania ogłoszeń po kategorii i lokalizacji *
+- Umożliwienie sortowania ogłoszeń po cenie i dacie publikacji 
+- Wyszukiwanie ogłoszeń *
+  - realizowanie wyszukiwania na podstawie słowa kluczowego *
+  - realizowanie wyszukiwania na podstawie kategorii *
+  - realizowanie wyszukiwania na podstawie dodanych załączników *
+  - realizowanie wyszukiwania na podstawie zakresu cenowego *
+  - realizowanie wyszukiwania na podstawie występowania słowa kluczowego jedynie w treści ogłoszenia *
+  - realizowanie wyszukiwania na podstawie występowania słowa kluczowego jedynie w tytule *
+  - realizowanie ręcznego modyfikatora filtrów wyszukiwania 
+  - wyszukiwanie po tagach
+
+  * - funkcjonalności już zaimplementowane
