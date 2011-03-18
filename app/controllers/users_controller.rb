@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   before_filter :authenticate, :only => [:edit, :update]
   before_filter :correct_user, :only => [:edit, :update]
   # GET /users
@@ -43,19 +44,17 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    user=@user.save
-    respond_to do |format|
-      if !user.nil? && simple_captcha_valid?
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+    if simple_captcha_valid?  
+      if @user.save
+        Confirmation.send_confirmation(@user).deliver
+        redirect_to(@user, :notice => 'Utworzono konto uzytkownika')
+      else
+        flash[:error]='Wystapil blad podczas rejestracji. Powtorz czynnosc'
+        redirect_back_or :root
       end
-      if user.nil?
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
-      if !simple_captcha_valid?
-        format.html{redirect_to :root}
-      end
+    else
+      flash[:error]='Nie poprawnie wprowadzony kod autoryzacji'
+      redirect_back_or :root
     end
   end
 
