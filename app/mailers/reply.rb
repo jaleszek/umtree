@@ -12,7 +12,6 @@ class Reply < ActionMailer::Base
     mail(:to => receiver,
          :bcc => ["jampolak@poczta.onet.pl", "aaa"])
   end
-
 end
 
 
