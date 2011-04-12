@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110310115514) do
+ActiveRecord::Schema.define(:version => 20110317133938) do
 
   create_table "categories", :force => true do |t|
     t.datetime "created_at"
@@ -85,8 +85,10 @@ ActiveRecord::Schema.define(:version => 20110310115514) do
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "salt"
-    t.boolean  "admin",         :default => false
+    t.boolean  "admin",                   :default => false
     t.boolean  "terms"
+    t.boolean  "email_confirmation"
+    t.string   "email_confirmation_hash"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
