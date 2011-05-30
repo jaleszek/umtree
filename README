@@ -33,5 +33,9 @@ Analiza wymagań użytkownika
   - realizowanie wyszukiwania na podstawie występowania słowa kluczowego jedynie w tytule *
   - realizowanie ręcznego modyfikatora filtrów wyszukiwania 
   - wyszukiwanie po tagach
-
+...
   * - funkcjonalności już zaimplementowane
+
+Uwagi do korzystania z git-a:
+z racji, iż dopireo ucze się korzystania z git-a i githuba, nie wszystkie commity są czyste i poprawne. 
+Initial commit zawiera pliki, które stworzyłem przed rozpoczęciem nauki git-a, dlatego zawierają owoc kilkutygodniowej pracy.
