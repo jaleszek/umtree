@@ -34,7 +34,9 @@ gem "meta_where"
 gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 gem "mail", "2.2.11"
 gem 'action_mailer_tls'
-
+gem 'readability', :git => 'https://github.com/sspinc/readability.git'
+gem 'nokogiri'
+gem 'capistrano-ext'
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -2,7 +2,6 @@
 # Schema version: 20110117232015
 #
 # Table name: categories
-#
 #  id                :integer         not null, primary key
 #  created_at        :datetime
 #  updated_at        :datetime

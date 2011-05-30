@@ -5,3 +5,11 @@ tmp/*
 db/database.yml
 nbproject/*
 public/system/*
+*.irbrc
+*~
+*.swp
+*.swn
+*.swo
+*.log
+.bundle
+.sass-cache/*
